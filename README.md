@@ -7,7 +7,7 @@ js-prettier is ripped directly from the wonderful work in https://github.com/fat
 
 ## Install
 
-*  [Vundle](https://github.com/gmarik/vundle)
+* [Vundle](https://github.com/gmarik/vundle)
   * `Plugin 'llimllib/js-prettier'`
   
 ## Usage
