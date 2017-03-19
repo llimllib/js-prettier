@@ -21,4 +21,4 @@ Add this line to your .vimrc to format your javascript files on save:
 Otherwise, just bind `call js#fmt#Format()` to your preferred key mapping. Here's an example,
 binding it to `<leader>p` only in javascript fies:
 
-`au FileType javascript nnoremap <leader>p :ca js#fmt#Format()<CR>`
+`au FileType javascript nnoremap <leader>p :call js#fmt#Format()<CR>`
