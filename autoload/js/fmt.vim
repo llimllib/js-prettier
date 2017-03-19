@@ -155,17 +155,8 @@ function! s:parse_errors(filename, content) abort
   " list of errors to be put into location list
   let errors = []
   for line in splitted
-    " XXX TODO FIXME
-    " let tokens = matchlist(line, '^\(.\{-}\):\(\d\+\):\(\d\+\)\s*\(.*\)')
     let tokens = matchlist(line, '^\(.\{-}\):\(.\{-}\)(\(\d\+\):\(\d\+\))')
     if !empty(tokens)
-      " XXX TODO FIXME
-      " call add(errors,{
-      "       \"filename": a:filename,
-      "       \"lnum":     tokens[2],
-      "       \"col":      tokens[3],
-      "       \"text":     tokens[4],
-      "       \ })
       call add(errors,{
             \"filename": a:filename,
             \"lnum":     tokens[3],
