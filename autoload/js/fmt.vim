@@ -123,7 +123,7 @@ function! js#fmt#update_file(source, target)
   call js#list#Window(l:listtype)
 endfunction
 
-" run runs the gofmt/goimport command for the given source file and returns
+" run runs the prettier command for the given source file and returns
 " the the output of the executed command. Target is the real file to be
 " formated.
 function! js#fmt#run(bin_name, source, target)
