@@ -49,51 +49,6 @@ function! js#util#has_job() abort
   return has('job') && has("patch-8.0.0087")
 endfunction
 
-let s:env_cache = {}
-
-" env returns the go environment variable for the given key. Where key can be
-" GOARCH, GOOS, GOROOT, etc... It caches the result and returns the cached
-" version.
-function! js#util#env(key) abort
-  let l:key = tolower(a:key)
-  if has_key(s:env_cache, l:key)
-    return s:env_cache[l:key]
-  endif
-
-  if executable('go')
-    let l:var = call('js#util#'.l:key, [])
-    if js#util#ShellError() != 0
-      call js#util#EchoError(printf("'go env %s' failed", toupper(l:key)))
-      return ''
-    endif
-  else
-    let l:var = eval("$".toupper(a:key))
-  endif
-
-  let s:env_cache[l:key] = l:var
-  return l:var
-endfunction
-
-function! js#util#goarch() abort
-  return substitute(js#util#System('go env GOARCH'), '\n', '', 'g')
-endfunction
-
-function! js#util#goos() abort
-  return substitute(js#util#System('go env GOOS'), '\n', '', 'g')
-endfunction
-
-function! js#util#goroot() abort
-  return substitute(js#util#System('go env GOROOT'), '\n', '', 'g')
-endfunction
-
-function! js#util#gopath() abort
-  return substitute(js#util#System('go env GOPATH'), '\n', '', 'g')
-endfunction
-
-function! js#util#osarch() abort
-  return js#util#goos() . '_' . js#util#goarch()
-endfunction
-
 " System runs a shell command. It will reset the shell to /bin/sh for Unix-like
 " systems if it is executable.
 function! js#util#System(str, ...) abort
