@@ -3,9 +3,7 @@
 js-prettier is a simple vim script to run the [prettier](https://github.com/jlongster/prettier/)
 command on save, show errors if they appear, and not hose your work if they do.
 
-js-prettier is ripped directly from the wonderful work in https://github.com/fatih/vim-go, 
-which is unfortunately encumbered with a confusing license. I am not yet sure how this code
-is licensed, but I'd like to BSD it. For now, use at your own risk.
+js-prettier is ripped directly from the wonderful work in https://github.com/fatih/vim-go.
 
 ## Install
 
