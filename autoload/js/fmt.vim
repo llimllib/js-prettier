@@ -138,19 +138,9 @@ function! js#fmt#run(bin_name, source, target)
   return out
 endfunction
 
-" fmt_cmd returns a dict that contains the command to execute gofmt (or
-" goimports). args is dict with
+" fmt_cmd returns a dict that contains the command to execute pretter
 function! s:fmt_cmd(bin_name, source, target)
-  " check if the user has installed command binary.
-  " For example if it's goimports, let us check if it's installed,
-  " if not the user get's a warning via js#path#CheckBinPath()
-  let bin_path = js#path#CheckBinPath(a:bin_name)
-  if empty(bin_path)
-    return
-  endif
-
-  " start constructing the command
-  let cmd = [bin_path]
+  let cmd = [g:js_fmt_command]
   call add(cmd, "--write")
   call extend(cmd, split(g:js_fmt_options, " "))
 
